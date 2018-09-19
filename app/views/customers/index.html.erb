@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Created at</th>
+    <th>Company</th>
+  </tr>
+  <% @customers.each do |customer| %>
+    <tr>
+      <th><%= customer.first_name %></th>
+      <th><%= customer.last_name %></th>
+      <th><%= customer.email %></th>
+      <th><%= customer.created_at %></th>
+      <th><%= customer.company.name %></th>
+    </tr>
+  <% end %>
+</table>
