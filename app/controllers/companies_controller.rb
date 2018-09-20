@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
+    @companies = Company.paginate(page: params[:page], per_page: 50).order(:name)
   end
 
   def show
@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @companies = Company.find(params[:id])
+    @company = Company.find(params[:id])
   end
 
   def create
@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    if @company.update_attributes(params[:company])
+    if @company.update_attributes(company_params)
       redirect_to companies_path
     else
       render :action => :edit
@@ -37,5 +37,11 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.destroy
     redirect_to companies_path
+  end
+
+  private
+
+  def company_params
+    params.require(:company).permit(:name)
   end
 end
