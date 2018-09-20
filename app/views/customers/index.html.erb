@@ -1,12 +1,18 @@
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Created at</th>
-    <th>Company</th>
-    <th>Actions</th>
-  </tr>
+<div class="p-2">
+  <%= link_to 'Add New Customer', { action: :new }, class: 'btn btn-primary' %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Created at</th>
+      <th>Company</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
   <tbody>
   <% @customers.each do |customer| %>
     <tr>
@@ -20,4 +26,5 @@
   <% end %>
   </tbody>
 </table>
+
 <%= will_paginate @customers %>
