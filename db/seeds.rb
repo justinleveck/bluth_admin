@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-5.times do
+100.times do
   Company.create(name: Faker::Company.name)
 end
 
-Company.all.each do |company|
+Company.first(20).each do |company|
   5.times do
     password = Faker::Internet.password
 
