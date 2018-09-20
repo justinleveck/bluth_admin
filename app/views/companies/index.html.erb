@@ -5,6 +5,7 @@
     <th>Number of customers</th>
     <th>Actions</th>
   </tr>
+  <tbody>
   <% @companies.each do |company| %>
     <tr>
       <th><%= company.name %></th>
@@ -13,4 +14,6 @@
       <th><%= link_to 'Edit', { action: :edit, id: company.id } %> | <%= link_to 'Delete', { action: :destroy, id: company.id }, method: :delete, data: { confirm: 'Are you sure?' } %></th> 
     </tr>
   <% end %>
+  </tbody>
 </table>
+
