@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin creates customer' do
+feature 'Admin updates customer' do
 	scenario 'with valid input' do
     other_company = Fabricate(:company)
     customer = Fabricate(:customer)

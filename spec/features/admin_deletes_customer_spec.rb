@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin creates customer' do
+feature 'Admin deletes customer' do
 	scenario 'with valid input' do
     expect(Customer.count).to eq(0)
 
