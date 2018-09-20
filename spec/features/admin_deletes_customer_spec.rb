@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin deletes customer' do
-	scenario 'with valid input' do
+	scenario 'deleting a customer' do
     expect(Customer.count).to eq(0)
 
     customer = Fabricate(:customer)

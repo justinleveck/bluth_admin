@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin deletes company' do
-	scenario 'with valid input' do
+	scenario 'deleting a company' do
     company = Fabricate(:company)
     expect(Company.count).to eq(1)
 
