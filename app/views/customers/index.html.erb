@@ -5,6 +5,7 @@
     <th>Email</th>
     <th>Created at</th>
     <th>Company</th>
+    <th>Actions</th>
   </tr>
   <% @customers.each do |customer| %>
     <tr>
@@ -13,6 +14,7 @@
       <th><%= customer.email %></th>
       <th><%= customer.created_at %></th>
       <th><%= customer.company.name %></th>
+      <th><%= link_to 'Edit', { action: :edit, id: customer.id } %> | <%= link_to 'Delete', { action: :destroy, id: customer.id }, method: :delete, data: { confirm: 'Are you sure?' } %></th> 
     </tr>
   <% end %>
 </table>
