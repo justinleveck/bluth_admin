@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Admin viewing customers' do
-	scenario 'with valid input' do
+feature 'Admin viewing companies' do
+	scenario 'with pagination' do
     Fabricate.times(100, :company)
 
 		visit companies_path
