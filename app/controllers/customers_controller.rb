@@ -1,6 +1,12 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    if params[:company_id]
+      customers = Customer.where(company_id: params[:company_id])
+    else
+      customers = Customer.all
+    end
+
+    @customers = customers.paginate(page: params[:page], per_page: 50).order(:last_name)
   end
 
   def show
@@ -12,11 +18,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def create
-    @customer = Customer.new(params[:customer])
+    @customer = Customer.new(customer_params)
     if @customer.save
       redirect_to customers_path
     else
@@ -26,7 +32,7 @@ class CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    if @customer.update_attributes params[:customer]
+    if @customer.update_attributes(customer_params)
       redirect_to customers_path
     else
       render :action => :edit
@@ -37,5 +43,11 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to customers_path
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(:first_name, :last_name, :email)
   end
 end
