@@ -8,6 +8,9 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
 
+  <%= f.label 'Company id' %>
+  <%= f.text_field :company_id %>
+
   <% if action_name == 'new' %>
     <%= f.label :password %>
     <%= f.password_field :password %>
